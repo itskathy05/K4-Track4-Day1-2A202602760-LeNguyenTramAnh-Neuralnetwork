@@ -1,0 +1,20 @@
+{
+  "parameter_count": 47879,
+  "logits_shape": [
+    8,
+    7
+  ],
+  "step0_loss": 2.3775719671999713,
+  "ln7": 1.9459101490553132,
+  "gradient_norms": {
+    "net.0.weight": 0.9154943227767944,
+    "net.0.bias": 0.41088810563087463,
+    "net.2.weight": 3.0234246253967285,
+    "net.2.bias": 0.5389723181724548,
+    "net.4.weight": 2.491093397140503,
+    "net.4.bias": 0.6510047912597656
+  },
+  "overfit_steps": 20,
+  "overfit_final_loss": 0.0008133966475725174,
+  "overfit_final_acc": 1.0
+}

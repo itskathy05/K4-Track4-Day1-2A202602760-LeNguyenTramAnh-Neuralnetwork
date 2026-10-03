@@ -7,3 +7,6 @@ data/processed/
 *.pt
 *.pth
 *.ckpt
+/kaggle_bundle_*.zip
+/submission_*.zip
+/notebook*.ipynb

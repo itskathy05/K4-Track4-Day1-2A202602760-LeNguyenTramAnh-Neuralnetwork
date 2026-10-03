@@ -1,0 +1,41 @@
+{
+  "selected_lr": 0.1,
+  "baseline_ids": [
+    "base-s1",
+    "base-s2",
+    "base-s3"
+  ],
+  "baseline_stats": {
+    "n": 3,
+    "f1_mean": 0.856226115685378,
+    "f1_std": 0.0018587755051709784,
+    "acc_mean": 0.9090847156185683,
+    "acc_std": 0.0006520543818068699,
+    "noise_2sigma": 0.003717551010341957
+  },
+  "winner": "b",
+  "final_ids": [
+    "candidate-b-s1",
+    "candidate-b-s2",
+    "candidate-b-s3"
+  ],
+  "candidate_stats": {
+    "candidate_a": {
+      "n": 3,
+      "f1_mean": 0.8684230889968735,
+      "f1_std": 0.006899083757731137,
+      "acc_mean": 0.9122723980407765,
+      "acc_std": 0.001687194058194079,
+      "noise_2sigma": 0.013798167515462274
+    },
+    "candidate_b": {
+      "n": 3,
+      "f1_mean": 0.8846373400440241,
+      "f1_std": 0.002368476228899568,
+      "acc_mean": 0.9253924542644665,
+      "acc_std": 0.0008076652524859839,
+      "noise_2sigma": 0.004736952457799136
+    },
+    "threshold": 0.003717551010341957
+  }
+}

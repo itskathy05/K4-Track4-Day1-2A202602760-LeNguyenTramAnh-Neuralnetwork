@@ -1,0 +1,7 @@
+{
+  "he_original_step0_loss": 2.3775719671999713,
+  "same_model_final_weight_x0p1_step0_loss": 1.9704389776703115,
+  "uniform_logits_step0_loss": 1.9459099908598405,
+  "ln7": 1.9459101490553132,
+  "note": "Probe độc lập trên Kaggle GPU; không dùng để huấn luyện hay chọn cấu hình."
+}

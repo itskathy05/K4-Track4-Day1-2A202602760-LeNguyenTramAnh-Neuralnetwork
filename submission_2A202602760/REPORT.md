@@ -12,6 +12,7 @@ Baseline M-base: `54→256→128→7`, ReLU, He initialization, cross-entropy (C
 |---|---:|
 | Số tham số / shape logits | 47.879 / `(8,7)` |
 | CE bước 0 trên val / `ln 7` | 2,3776 / 1,9459 (health check seed 42) |
+| Probe riêng: nhân trọng số lớp logits cuối 0,1 / logits đều | 1,9704 / 1,9459 |
 | Quá khớp 20 mẫu | loss 0,000813, accuracy 100% sau 20 update |
 | Gradient của 6 tensor tham số | đều khác None và khác 0 |
 | Baseline val macro-F1, 3 seed | **0,8562 ± 0,0019** |
@@ -21,6 +22,8 @@ Baseline M-base: `54→256→128→7`, ReLU, He initialization, cross-entropy (C
 ![Đường loss khi quá khớp 20 mẫu](figures/health_overfit20.png)
 
 Loss bước 0 của health check **không gần** `ln 7`; `base-s1` cũng là 2,2691. He initialization trên cả lớp ra tạo logits có độ phân tán ban đầu (độ lệch chuẩn lớp ra 0,5759 ở `base-s1`), nên điểm số lớp không đồng đều và CE có thể cao hơn mốc logits đều. Điều này là một tín hiệu cần kiểm tra, không thể tự coi là “đạt kiểm tra ln 7”. Tuy nhiên shape/tham số/gradient đều đúng và phép thử overfit 20 mẫu thành công, nên không có bằng chứng pipeline bị đứt. Khởi tạo zeros cho loss 1,9459 đúng mốc nhưng lại **không học được**; chỉ riêng loss bước 0 đẹp không chứng minh mạng khỏe.
+
+Sau khi khóa cấu hình và eval, tôi chạy **một probe chẩn đoán độc lập**, không huấn luyện và không dùng để lựa chọn mô hình (`step0_diagnostic.json`, cell sau Stage 1). Nó tái hiện đúng loss He gốc 2,37757; chỉ nhân trọng số lớp logits cuối với 0,1 đã đưa CE về 1,97044, còn logits đều cho 1,94591 ≈ `ln 7`. Đây là bằng chứng trực tiếp rằng biên độ lớp ra giải thích phần lớn chênh lệch. **Không** thay khởi tạo của các run đã báo cáo, không ghi đè checkpoint/prediction, và không dùng con số 1,94591 làm loss bước 0 của baseline.
 
 Ba baseline `base-s1/s2/s3` cho val macro-F1 lần lượt 0,8584/0,8552/0,8551. Trong phần dưới, tôi chỉ gọi khác biệt là có bằng chứng khi nó vượt 0,0037; đây là ngưỡng tham khảo từ **baseline trên val**, không phải phép kiểm định ý nghĩa thống kê cho mọi cấu hình.
 
